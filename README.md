@@ -25,5 +25,5 @@ These settings are also exposed in the script properties, visible in OBS Studio'
 
 
 # Authors
-**mwelsh** *(from the TILT forums: http://tiltforums.com/u/mwelsh)*  
-**Tari** *(github.com/katarai)*
+**mwelsh** *([TILT forums](http://tiltforums.com/u/mwelsh))*  
+**Tari**
