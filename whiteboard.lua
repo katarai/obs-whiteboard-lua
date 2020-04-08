@@ -1,6 +1,6 @@
 -- OBS Whiteboard Script
 -- Authors: Mike Welsh (mwelsh@gmail.com), Tari
--- v1.3a
+-- v1.3
 
 
 obs             = obslua
