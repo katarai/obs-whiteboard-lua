@@ -4,7 +4,7 @@ This script adds a new whiteboard source to OBS Studio that allows users to disp
 Each scene can have its own whiteboard, though the pencil settings (color, size, etc.) are shared.
 
 # How to Use
-0. Add the whiteboard script to OBS (whiteboard.lua).
+0. Add the whiteboard script (whiteboard.lua) to OBS.
 1. Place a whiteboard source at the top of a scene. *(Note: you may have to toggle the visibility of the whiteboard on/off once to activate it)*
 2. Project your *scene* with either Windowed or Fullscreen Projector.
 3. Draw on your projected screen by left-clicking!
