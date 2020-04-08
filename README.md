@@ -3,6 +3,8 @@ Whiteboard source for OBS Studio (Windows).
 
 This script adds a new whiteboard source to OBS Studio that allows users to display live drawings on top of their sources.
 
+Each scene can have its own whiteboard, though the pencil settings (color, size, etc.) are shared.
+
 # How to Use
 0. Add the whiteboard script to OBS (whiteboard.lua).
 1. Place a whiteboard source at the top of a scene.
