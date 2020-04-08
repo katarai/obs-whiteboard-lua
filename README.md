@@ -23,7 +23,7 @@ These settings are also exposed in the script properties, visible in OBS Studio'
 - Script settings windows does not update when hotkeys are used.
   * This is due to two limitations with the OBS script library:
    1) There does not appear to be a *safe* way to access and update the settings object outside of particular functions. 
-   2) The script settings in the script window do not refresh themselves in the UI when changed (per-source properties don't have this problem).
+   2) The script settings in the script window do not refresh themselves in the UI when changed (notably, per-source properties don't have this problem).
 
 
 # Authors
