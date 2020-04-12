@@ -235,7 +235,10 @@ source_def.video_tick = function(data, dt)
         end
         
         local window = winapi.GetForegroundWindow()
-        if window_match(window) and string.find(window_name, "Windowed Projector", 1, true) then
+        window_name = winapi.InternalGetWindowText(window, nil)
+        if window_match(window_name) and 
+        (string.find(window_name, "Windowed Projector", 1, true) or
+        string.find(window_name, "Fullscreen Projector", 1, true)) then
             winapi.ScreenToClient(window, mouse_pos)
             local window_rect = winapi.GetClientRect(window)
             
@@ -355,8 +358,7 @@ source_def.video_tick = function(data, dt)
 end
 
 -- Check whether current foreground window is relevant to us.
-function window_match(window)
-    window_name = winapi.InternalGetWindowText(window, nil)
+function window_match(window_name)
     
     local valid_names = {}
     
