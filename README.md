@@ -25,6 +25,9 @@ These settings are also exposed in the script properties, visible in OBS Studio'
    
 - Whiteboard source doesn't accept inputs after being added to a scene, or after the script is refreshed.
   * This is because the source is only interactable when it's active. There's unfortunately no way to check whether a source is currently active, so we rely on the triggers on transition between active and deactive to determine when to enable interaction. Certain situations do not trigger this transition (e.g. adding a new source, refreshing the script, etc.), hence the source never knows it's active.
+  
+- Whiteboard source starts minimized sometimes.
+  * Some users have reported that newly added whiteboard sources show up minimized. Setting its size to 'Fit to Screen' seems to resolve this.
 
 
 # Authors
