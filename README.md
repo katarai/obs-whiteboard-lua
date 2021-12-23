@@ -31,5 +31,5 @@ These settings are also exposed in the script properties, visible in OBS Studio'
 
 
 # Authors
-**mwelsh** *([TILT forums](http://tiltforums.com/u/mwelsh))*  *([github](https://github.com/Herschel/obs-whiteboard))*
+**mwelsh** *([TILT forums](http://tiltforums.com/u/mwelsh))*  *([github](https://github.com/Herschel/obs-whiteboard))*  
 **Tari**
