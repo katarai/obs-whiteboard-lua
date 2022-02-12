@@ -10,9 +10,10 @@ Each scene can have its own whiteboard, though the pencil settings (color, size,
 3. Draw on your projected screen by left-clicking!
 
 You can add hotkeys for the following actions in the OBS settings:
-- Cycle colors (Yellow, Red, Green, Blue, White, Custom)
-- Cycle sizes (this cycles through all the even pixel sizes, e.g. 2, 4, 6, etc.)
+- Cycle pens
+- Switch to pen
 - Toggle eraser on/off
+- Toggle mouse on/off
 - Clear canvas
 
 These settings are also exposed in the script properties, visible in OBS Studio's script menu when selecting the whiteboard plugin. Users can set more precise sizes and define the custom color, here.
@@ -31,5 +32,6 @@ These settings are also exposed in the script properties, visible in OBS Studio'
 
 
 # Authors
-**mwelsh** *([TILT forums](http://tiltforums.com/u/mwelsh))*  *([github](https://github.com/Herschel/obs-whiteboard))*  
-**Tari**
+* **mwelsh** *([TILT forums](http://tiltforums.com/u/mwelsh))*  *([github](https://github.com/Herschel/obs-whiteboard))*  
+* **Tari**
+* **Exeldro** *([github](https://github.com/Exeldro/obs-whiteboard-lua))*
