@@ -7,6 +7,7 @@ obs               = obslua
 hotkey_clear      = obs.OBS_INVALID_HOTKEY_ID
 hotkey_color      = obs.OBS_INVALID_HOTKEY_ID
 hotkey_erase      = obs.OBS_INVALID_HOTKEY_ID
+hotkey_erase_on   = obs.OBS_INVALID_HOTKEY_ID
 hotkey_mouse      = obs.OBS_INVALID_HOTKEY_ID
 needs_clear       = false
 swap_pen          = false
@@ -114,6 +115,14 @@ function script_load(settings)
     local hotkey_save_array5 = obs.obs_data_get_array(settings, "whiteboard.mousetoggle")
     obs.obs_hotkey_load(hotkey_mouse, hotkey_save_array5)
     obs.obs_data_array_release(hotkey_save_array5)
+
+    hotkey_erase_on = obs.obs_hotkey_register_frontend("whiteboard.eraserswitch", "Swap To Whiteboard Eraser", eraserswitch)
+    if hotkey_erase_on == nil then
+        hotkey_erase_on = obs.OBS_INVALID_HOTKEY_ID
+    end
+    local hotkey_save_array6 = obs.obs_data_get_array(settings, "whiteboard.eraserswitch")
+    obs.obs_hotkey_load(hotkey_erase_on, hotkey_save_array6)
+    obs.obs_data_array_release(hotkey_save_array6)
     
     script_update(settings)
 end
@@ -170,6 +179,10 @@ function script_save(settings)
 
     hotkey_save_array = obs.obs_hotkey_save(hotkey_mouse)
     obs.obs_data_set_array(settings, "whiteboard.mousetoggle", hotkey_save_array)
+    obs.obs_data_array_release(hotkey_save_array)
+
+    hotkey_save_array = obs.obs_hotkey_save(hotkey_erase_on)
+    obs.obs_data_set_array(settings, "whiteboard.eraserswitch", hotkey_save_array)
     obs.obs_data_array_release(hotkey_save_array)
 
     for i = 1, pen_count, 1 
@@ -573,6 +586,14 @@ function erasertoggle(pressed)
     end
 
     eraser = not eraser
+    setting_update = true
+end
+
+function eraserswitch(pressed)
+    if not pressed or eraser then
+        return
+    end
+    eraser = true
     setting_update = true
 end
 
