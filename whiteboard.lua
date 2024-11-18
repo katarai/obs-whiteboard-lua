@@ -14,6 +14,10 @@ toggle_size     = false
 eraser          = false
 scene_name      = nil
 setting_update  = false
+preview_name = "(Preview)"
+program_name = "(Program)"
+window_projector_name = "Windowed Projector"
+fullscreen_projector_name = "Fullscreen Projector"
 
 eraser_v4     = obs.vec4()
 color_count   = 6  -- The color at index color_count is reserved for user-defined custom colors.
@@ -111,9 +115,17 @@ function script_update(settings)
     local color_value = obs.obs_data_get_int(settings, "color")
     local size_value = obs.obs_data_get_int(settings, "size")
     local eraser_value = obs.obs_data_get_bool(settings, "eraser")
+    local preview_value = obs.obs_data_get_string(settings, "preview_value")
+    local program_value = obs.obs_data_get_string(settings, "program_value")
+    local windowed_value = obs.obs_data_get_string(settings, "windowed_value")
+    local fullscreen_value = obs.obs_data_get_string(settings, "fullscreen_value")
     
     color_index = color_value
     size = size_value
+    preview_name = preview_value
+    program_name = program_value
+    window_projector_name = windowed_value
+    fullscreen_projector_name = fullscreen_value
     
     -- Set custom color in the color array (always last element).
     color_array[color_count] = obs.obs_data_get_int(settings, "custom_color")
@@ -237,8 +249,8 @@ source_def.video_tick = function(data, dt)
         local window = winapi.GetForegroundWindow()
         window_name = winapi.InternalGetWindowText(window, nil)
         if window_match(window_name) and 
-        (string.find(window_name, "Windowed Projector", 1, true) or
-        string.find(window_name, "Fullscreen Projector", 1, true)) then
+        (string.find(window_name, window_projector_name, 1, true) or
+        string.find(window_name, fullscreen_projector_name, 1, true)) then
             winapi.ScreenToClient(window, mouse_pos)
             local window_rect = winapi.GetClientRect(window)
             
@@ -366,9 +378,9 @@ function window_match(window_name)
     -- window (Program). If non-studio mode, allow drawing on
     -- the (Preview) window, instead.
     if obs.obs_frontend_preview_program_mode_active() then
-        table.insert(valid_names, "(Program)")
+        table.insert(valid_names, program_name)
     else
-        table.insert(valid_names, "(Preview)")
+        table.insert(valid_names, preview_name)
     end
     
     -- Always allow drawing on projection of the scene containing
@@ -579,6 +591,14 @@ function script_properties()
     
     local eraser_toggle = obs.obs_properties_add_bool(properties, "eraser", "Eraser")
     
+    local preview_value = obs.obs_properties_add_text(properties, "preview_value", "(Preview) window",  obs.OBS_TEXT_DEFAULT)
+    
+    local program_value = obs.obs_properties_add_text(properties, "program_value", "(Program) window",  obs.OBS_TEXT_DEFAULT)
+    
+    local windowed_value = obs.obs_properties_add_text(properties, "windowed_value", "Windowed Projector", obs.OBS_TEXT_DEFAULT)
+    
+    local fullscreen_value = obs.obs_properties_add_text(properties, "fullscreen_value", "Fullscreen Projector", obs.OBS_TEXT_DEFAULT)
+    
     obs.obs_properties_add_button(properties, "clear", "Clear Whiteboard", clear_button)
     
     obs.obs_data_set_int(settings, "color", 5)
@@ -594,10 +614,18 @@ function script_defaults(settings)
     obs.obs_data_set_default_int(settings, "size", 2)
     obs.obs_data_set_default_bool(settings, "eraser", false)
     obs.obs_data_set_default_int(settings, "custom_color", 0xFF000000)
+    obs.obs_data_set_default_string(settings, "preview_value", "(Preview)")
+    obs.obs_data_set_default_string(settings, "program_value", "(Program)")
+    obs.obs_data_set_default_string(settings, "windowed_value", "Windowed Projector")
+    obs.obs_data_set_default_string(settings, "fullscreen_value", "Fullscreen Projector")
     
     color_index = 5
     size = 2
     eraser = false
+    preview_name = "(Preview)"
+    program_name = "(Program)"
+    window_projector_name = "Windowed Projector"
+    fullscreen_projector_name = "Fullscreen Projector"
 end
 
 function script_description()
@@ -608,7 +636,9 @@ Add this source on top of your scene, then project your entire scene and draw on
     
 Hotkeys can be set to toggle color, size, and eraser. An additional hotkey can be set to wipe the canvas.
     
-The settings on this page will unfortunately not update in real-time when using hotkeys, due to limitations with OBS's script properties.]==]
+The settings on this page will unfortunately not update in real-time when using hotkeys, due to limitations with OBS's script properties.]
+
+If using a language other than english: (Preview) window, (Program) window, Windowed Projector and Fullscreen Projector must be updated with the corresponding language names (Check README.md file). ]==]
 end
 
 
