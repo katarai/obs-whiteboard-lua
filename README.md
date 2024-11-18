@@ -17,6 +17,20 @@ You can add hotkeys for the following actions in the OBS settings:
 
 These settings are also exposed in the script properties, visible in OBS Studio's script menu when selecting the whiteboard plugin. Users can set more precise sizes and define the custom color, here.
 
+## Languages other than english
+If you use OBS in another language, this script will not work properly. To fix this change the following properties:
+- (Preview) window
+- Windowed Projector
+- Fullscreen Projector
+
+From the How to Use instructions, check the title for the projected window. The part inside the parenthesis should go to the "(Preview) window" (including the parenthesis), the rest of the title should either to "Windowed/Fullscreen Projector" 
+
+### Spanish
+In spanish you can set the values as follows:
+- (Preview) window: (Previsualización)
+- Windowed Projector: Proyector con ventana
+- Fullscreen Projector: Proyector de pantalla completa
+
 # Known Issues
 - Script settings windows does not update when hotkeys are used.
   * This is due to two limitations with the OBS script library:
