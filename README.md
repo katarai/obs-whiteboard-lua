@@ -19,17 +19,21 @@ These settings are also exposed in the script properties, visible in OBS Studio'
 
 ## Languages other than english
 If you use OBS in another language, this script will not work properly. To fix this change the following properties:
-- (Preview) window
-- Windowed Projector
-- Fullscreen Projector
+- Preview
+- Program
+- Projector
 
-From the How to Use instructions, check the title for the projected window. The part inside the parenthesis should go to the "(Preview) window" (including the parenthesis), the rest of the title should either to "Windowed/Fullscreen Projector" 
+From the How to Use instructions, check the title for the projected window. The part before the hyphen (-) should go in the "Projector" field. 
+The part after the hyphen will go into either the "Preview" or "Program" field, depending on if you're projecting the preview window (available in both studio and non-studio) or live window (only available in studio mode).
+In English, for example, the projector window titles would look like this:
+    * Projector - Preview
+    * Projector - Program
 
 ### Spanish
 In spanish you can set the values as follows:
-- (Preview) window: (Previsualización)
-- Windowed Projector: Proyector con ventana
-- Fullscreen Projector: Proyector de pantalla completa
+- Preview: Vista Previa
+- Program: Programa
+- Projector: Proyector
 
 # Known Issues
 - Script settings windows does not update when hotkeys are used.
@@ -43,6 +47,13 @@ In spanish you can set the values as follows:
 - Whiteboard source starts minimized sometimes.
   * Some users have reported that newly added whiteboard sources show up minimized. Setting its size to 'Fit to Screen' seems to resolve this.
 
+- Whiteboard source does not work after reloading script.
+  * Existing sources may need to be toggled off/on to get them to respect the new settings. Alternatively, restarting OBS or switching scenes should also fix the issue.
+  
+- Whiteboard source appears in red text in the list of sources.
+  * This appears to be a limitation of OBS, unfortunately. The sources are checked at startup only, and the whiteboard sources aren't activated at that time, so they permanently appear red, even when functioning correctly.
+  * See https://obsproject.com/forum/threads/lua-script-plugin-type-obs_source_type_input-shown-in-red-on-obs-32.191001/#post-693786 for a short discussion on this.
+  
 
 # Authors
 **mwelsh** *([TILT forums](http://tiltforums.com/u/mwelsh))*  *([github](https://github.com/Herschel/obs-whiteboard))*  
